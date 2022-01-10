@@ -7,7 +7,7 @@ var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
 var indexRoutes = require('./routes/index');
-
+var restaurantsRouter = require('./routes/restaurants');
 
 // load the env vars
 require('dotenv').config();
@@ -52,6 +52,7 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
+app.use('/restaurant', restaurantsRouter);
 
 
 // invalid request, send 404 page

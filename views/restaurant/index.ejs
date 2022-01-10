@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+<link rel='stylesheet' href='/stylesheets/restaurant.css' />
+
+<div id="details" class="">
+    <div class="logo">logo</div>
+    <div class="restaurant">
+      <h1>Rosie's Pizza
+        <!-- Restaurant Name -->
+      </h1>
+      <p>620 Bay Ave, Point Pleasant Beach, NJ 08742
+        <!-- Address -->
+      </p>
+    </div>
+    <div id="rating"> 10
+      <!-- Rating -->
+    </div>
+    <div class="hours">Monday	Closed <br>
+      Tuesday	Closed <br>
+      Wednesday	12:30–8PM <br>
+      Thursday	12:30–8PM<br>
+      Friday	12:30–8PM<br>
+      Saturday	12:30–8PM<br>
+      Sunday	12:30–7PM
+      
+      <!-- Hours -->
+    </div>
+    <div>
+      <a href="rosiesppb.com">Website</a>
+      <a href="https://www.facebook.com/rosiesppb/">Facebook</a>
+      <a href="https://www.facebook.com/rosiesppb/">instagram</a>
+    </div>
+</div>  
+
+<div class="reviews pt-3 d-flex flex-wrap">
+  <div class="card col-12 col-sm-5 col-md-3" href="/reviews/id" >
+    <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
+    <div class="card-body" href="/restaurant/id">
+      <div class="rating">
+        <p class="rating-num">9.2</p>
+      </div>
+      <h5 class="reviewCard__title">Best pizza ever</h5>
+      <p class="reviewCard__location">username | date</p>
+    </div>
+  </div>
+
+
+</div>
+<%- include('../partials/footer') %>

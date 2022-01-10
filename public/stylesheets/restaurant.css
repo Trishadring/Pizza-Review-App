@@ -1,0 +1,12 @@
+#details{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%
+}
+
+.hours{
+  font-size:.8rem;
+}
+
+@media screen and (max-width: 1200px) {
+  
+}
