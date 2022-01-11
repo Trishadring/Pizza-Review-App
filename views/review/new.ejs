@@ -9,11 +9,11 @@
   <form action="/restaurant/<%=restaurant._id%>/review/new" method="POST" >
     <div class="mb-3">
       <label  class="form-label">Restaurant</label>
-      <input type="text" readonly class="form-control-plaintext" name="name" value="<%= restaurant.name %>">
+      <input type="text" readonly class="form-control-plaintext" name="none" value="<%= restaurant.name %>">
     </div>
     <div class="mb-3">
       <label  class="form-label">Date</label>
-      <input name="seat" readonly class="form-control-plaintext"  value="<%= prettyDate() %>">
+      <input name="date" readonly class="form-control-plaintext"  value="<%= prettyDate() %>">
     </div>
     <!-- <div class="mb-3">
       <label  class="form-label">Rating Details</label>
@@ -21,7 +21,7 @@
     </div> -->
     <div class="mb-3">
       <label  class="form-label">Photo url</label>
-      <input name="seat" class="form-control"  >
+      <input name="photo" class="form-control"  >
     </div>
     <div class="mb-3">
       <label  class="form-label">Rating</label>
@@ -35,7 +35,7 @@
       <label  class="form-label">Comment</label>
       <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
-    <input type="submit" class="btn btn-outline-primary" value="Add Ticket">
+    <input type="submit" class="btn btn-outline-primary" value="Add Review">
   </form>
 </div>
 <%- include('../partials/footer') %>

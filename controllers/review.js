@@ -1,5 +1,6 @@
 const Review = require('../models/review');
 const Restaurant = require('../models/restaurant');
+var mongoose = require('mongoose');
 
 module.exports = {
 	newReview,
@@ -15,14 +16,17 @@ function newReview(req, res){
 
 
 function create(req, res){
-  
-  req.body.rating = parseInt(req.body.rating);
+  req.body.rating = parseFloat(req.body.rating);
   req.body.cost = parseInt(req.body.cost);
-  console.log(reg.body);
+  req.body.date = new Date();
   Restaurant.findById(req.params.id, function(err, restaurant) {
-    Review.create(req.body, function(err, reviewDocument){ // response from the database
-      res.redirect(`/restaurant/${req.body.restaurant}`); 
-    })
+    restaurant.ratings.push(req.body);
+    console.log(restaurant, " <- this is restaurant, in create reviews CTRL")
+    restaurant.save(function(err){
+			// redirect the user back to the show page
+
+			res.redirect(`/restaurant/${restaurant._id}`)
+		})
 	});
 }
 

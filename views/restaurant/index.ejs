@@ -23,20 +23,22 @@
 
 <a class="btn btn-outline-primary" href="/restaurant/<%=restaurant._id%>/review/new" > Add a Review</a>
 <div id="reviews">
-  <% restaurant.ratings.forEach(function(m) { %>
-    <div class="reviews pt-3 d-flex flex-wrap">
-      <div class="card col-12 col-sm-5 col-md-3">
-        <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
-        <div class="card-body" >
-          <div class="rating">
-            <p class="rating-num"><%= m.rating %></p>
+  <% if(restaurant.ratings){ %> 
+    <% restaurant.ratings.forEach(function(m) { %>
+      <div class="reviews pt-3 d-flex flex-wrap">
+        <div class="card col-12 col-sm-5 col-md-3">
+          <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
+          <div class="card-body" >
+            <div class="rating">
+              <p class="rating-num"><%= m.rating %></p>
+            </div>
+            <h5 class="reviewCard__title"><%= m.comment %></h5>
+            <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
           </div>
-          <h5 class="reviewCard__title"><%= m.comment %></h5>
-          <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
         </div>
       </div>
-    </div>
-  <% }); %>
+    <% }); %>
+  <% }; %> 
 </div>
 
 
