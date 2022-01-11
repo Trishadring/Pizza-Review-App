@@ -26,7 +26,12 @@
           <a class="nav-link" href="/restaurant">Restaurants</a>
         </li> -->
       </ul>
-      <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+      <% if (user) { %>
+        <a class="btn btn-sm btn-outline-secondary" href="/logout">Log Out</a>
+        <span>Hi <%= user.username %> </span>
+      <% } else { %>
+        <a class="btn btn-sm btn-outline-secondary" href="/auth/google"> Login with Google</a>
+      <% } %>      
     </div>
   </nav>
   <div class="container">

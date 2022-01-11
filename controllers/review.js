@@ -21,10 +21,7 @@ function create(req, res){
   req.body.date = new Date();
   Restaurant.findById(req.params.id, function(err, restaurant) {
     restaurant.ratings.push(req.body);
-    console.log(restaurant, " <- this is restaurant, in create reviews CTRL")
     restaurant.save(function(err){
-			// redirect the user back to the show page
-
 			res.redirect(`/restaurant/${restaurant._id}`)
 		})
 	});
