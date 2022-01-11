@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+<h1>Add Review</h1>
+<% function prettyDate(){
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric' };
+  const date = new Date
+  return date.toLocaleDateString("en-US", options);
+} %> 
+<div class="container">
+  <form action="/restaurant/<%=restaurant._id%>/review/new" method="POST" >
+    <div class="mb-3">
+      <label  class="form-label">Restaurant</label>
+      <input type="text" readonly class="form-control-plaintext" name="name" value="<%= restaurant.name %>">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Date</label>
+      <input name="seat" readonly class="form-control-plaintext"  value="<%= prettyDate() %>">
+    </div>
+    <!-- <div class="mb-3">
+      <label  class="form-label">Rating Details</label>
+      <input type="number" class="form-control" name="price" step="any" min="0">
+    </div> -->
+    <div class="mb-3">
+      <label  class="form-label">Photo url</label>
+      <input name="seat" class="form-control"  >
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Rating</label>
+      <input type="number" class="form-control" name="rating" step="any" min="0" max="10">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Cost</label>
+      <input type="number" class="form-control" name="cost" step="any" min="0" >
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Comment</label>
+      <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Add Ticket">
+  </form>
+</div>
+<%- include('../partials/footer') %>

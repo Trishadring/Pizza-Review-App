@@ -1,48 +1,44 @@
 <%- include('../partials/header') %>
 <link rel='stylesheet' href='/stylesheets/restaurant.css' />
 
+<% function prettyDate(date){
+  const options = {year: 'numeric', month: 'numeric', day: 'numeric',};
+  return date.toLocaleDateString("en-US", options);
+} %> 
+
 <div id="details" class="">
-    <div class="logo">logo</div>
+    <!-- <div class="logo">logo</div> -->
     <div class="restaurant">
-      <h1>Rosie's Pizza
-        <!-- Restaurant Name -->
-      </h1>
-      <p>620 Bay Ave, Point Pleasant Beach, NJ 08742
-        <!-- Address -->
-      </p>
+      <h1><%= restaurant.name %></h1>
+      <p><%= restaurant.address %></p>
     </div>
-    <div id="rating"> 10
+    <div id="rating"> 
+      <p id="rating-num">10</p>
       <!-- Rating -->
     </div>
-    <div class="hours">Monday	Closed <br>
-      Tuesday	Closed <br>
-      Wednesday	12:30–8PM <br>
-      Thursday	12:30–8PM<br>
-      Friday	12:30–8PM<br>
-      Saturday	12:30–8PM<br>
-      Sunday	12:30–7PM
-      
-      <!-- Hours -->
-    </div>
     <div>
-      <a href="rosiesppb.com">Website</a>
-      <a href="https://www.facebook.com/rosiesppb/">Facebook</a>
-      <a href="https://www.facebook.com/rosiesppb/">instagram</a>
+      <a href="<%= restaurant.url %>">Website</a>
     </div>
 </div>  
 
-<div class="reviews pt-3 d-flex flex-wrap">
-  <div class="card col-12 col-sm-5 col-md-3" href="/reviews/id" >
-    <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
-    <div class="card-body" href="/restaurant/id">
-      <div class="rating">
-        <p class="rating-num">9.2</p>
+<a class="btn btn-outline-primary" href="/restaurant/<%=restaurant._id%>/review/new" > Add a Review</a>
+<div id="reviews">
+  <% restaurant.ratings.forEach(function(m) { %>
+    <div class="reviews pt-3 d-flex flex-wrap">
+      <div class="card col-12 col-sm-5 col-md-3">
+        <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
+        <div class="card-body" >
+          <div class="rating">
+            <p class="rating-num"><%= m.rating %></p>
+          </div>
+          <h5 class="reviewCard__title"><%= m.comment %></h5>
+          <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
+        </div>
       </div>
-      <h5 class="reviewCard__title">Best pizza ever</h5>
-      <p class="reviewCard__location">username | date</p>
     </div>
-  </div>
-
-
+  <% }); %>
 </div>
+
+
+
 <%- include('../partials/footer') %>
