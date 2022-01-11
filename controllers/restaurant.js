@@ -15,6 +15,7 @@ function index(req, res){
 
 function allRestaurants(req, res){
     console.log('sending allRestaurants')
+    console.log(req.user, ' req.user')
     Restaurant.find({}, function(err, restaurantDocuments){
       res.render('./index', {
         title: 'home page',

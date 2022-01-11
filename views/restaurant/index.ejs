@@ -20,8 +20,11 @@
       <a href="<%= restaurant.url %>">Website</a>
     </div>
 </div>  
+<% if (user) { %>
+  <a class="btn btn-outline-primary" href="/restaurant/<%=restaurant._id%>/review/new" > Add a Review</a>
+<% }; %>
+  
 
-<a class="btn btn-outline-primary" href="/restaurant/<%=restaurant._id%>/review/new" > Add a Review</a>
 <div id="reviews">
   <% if(restaurant.ratings){ %> 
     <% restaurant.ratings.forEach(function(m) { %>
