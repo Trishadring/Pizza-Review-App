@@ -41,16 +41,11 @@ function create(req, res){
 
 function deleteReview(req, res) {
   console.log("review delete review function")
-  console.log(req.params);
-  console.log(req.user);
- 
   Restaurant.findOne(
     {'ratings._id': req.params.id, 
     'ratings.userId': req.user.userId},
     function(err, restaurant) {
-      if (!restaurant || err) return res.redirect(`/restaurants/${restaurant._id}`);
-      // Remove the subdoc (https://mongoosejs.com/docs/subdocs.html)
-      // restaurant.review.id(_id).remove();
+      if (!restaurant || err) return res.redirect(`/restaurant/${restaurant._id}`);
       restaurant.ratings.remove(req.params.id);
       // Save the updated restaurant
       restaurant.save(function(err) {
@@ -63,18 +58,10 @@ function deleteReview(req, res) {
 
 
 function edit(req, res) {
-  // Note the cool "dot" syntax to query on the property of a subdoc
   Restaurant.findOne({'ratings._id': req.params.id}, function(err, restaurant) {
-    // Find the rating subdoc using the id method on Mongoose arrays
-    // https://mongoosejs.com/docs/subdocs.html
     const ratingSubdoc = restaurant.ratings.id(req.params.id);
-    // Ensure that the rating was created by the logged in user
-    //if (!ratingSubdoc.userId.equals(req.user._id)) return res.redirect(`/restaurants/${restaurant._id}`);
-    // Update the text of the rating
     ratingSubdoc.comment = req.body.text;
-    // Save the updated restaurant
     restaurant.save(function(err) {
-      // Redirect back to the restaurant's show view
       res.redirect(`/restaurant/${restaurant._id}`);
     });
   });

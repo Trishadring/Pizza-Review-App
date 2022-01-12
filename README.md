@@ -1,13 +1,11 @@
-# passport-boilerplate
+# Pizza Review app
 
 
 This is your passport boilerplate.
 
-## Setup 
+## about 
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+ built with Express, MonogoDB, html, css, bootstrap and Javascript
 
 
 #### Setup your git repo

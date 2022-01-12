@@ -1,19 +1,17 @@
 <%- include('./partials/header') %>
 <div class="reviews pt-3 d-flex flex-wrap">
   <% restaurants.forEach(function(m) { %>
-    
-      <div class="card col-12 col-sm-5 col-md-3" id="<%= m._id %>" >
-        <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
-        <div class="card-body" >
-          <div class="rating">
-            <p class="rating-num">9.2</p>
-          </div>
-          <h5 class="reviewCard__title"><%= m.name %></h5>
-          <p class="reviewCard__location"><%= m.address %></p>
-          <a href="/restaurant/<%= m._id %>">Link to restaurant</a>
+    <div class="card col-12 col-sm-5 col-md-3" id="<%= m._id %>" >
+      <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap">
+      <div class="card-body" >
+        <div class="rating">
+          <p class="rating-num">9.2</p>
         </div>
+        <h5 class="reviewCard__title"><%= m.name %></h5>
+        <p class="reviewCard__location"><%= m.address %></p>
+        <a href="/restaurant/<%= m._id %>">Link to restaurant</a>
       </div>
-
+    </div>
   <% }); %>
 </div>
 <%- include('./partials/footer') %>

@@ -15,7 +15,6 @@ function index(req, res){
 
 function allRestaurants(req, res){
     console.log('sending allRestaurants')
-    //console.log(req.user, ' req.user')
     Restaurant.find({}, function(err, restaurantDocuments){
       res.render('./index', {
         title: 'home page',
@@ -25,10 +24,7 @@ function allRestaurants(req, res){
 }
 
 function show(req, res){
-  console.log(req.params, "params");
   Restaurant.findById(req.params.id).populate('ratings').exec((err, ratings) => { 
-    console.log(ratings, "rating")
     res.render('restaurant/index', { title: 'Reviews', restaurant : ratings });
-   
   })
 }
