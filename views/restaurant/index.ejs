@@ -37,9 +37,16 @@
           <div class="card-body" >
             <div class="rating">
               <p class="rating-num"><%= m.rating %></p>
+              
             </div>
             <h5 class="reviewCard__title"><%= m.comment %></h5>
+            <%= m._id %> love
             <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
+            <a class="btn btn-outline-primary" href="/review/<%=m._id%>" > Edit Review</a>
+              <form action="/review/<%= m._id %>?_method=DELETE" method="POST">
+                <button type="submit">X</button>
+              </form>
+            <a class="btn btn-outline-primary" href="/review/<%=m._id%>" > Delete Review</a>
           </div>
         </div>
       
