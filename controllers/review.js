@@ -16,14 +16,22 @@ function newReview(req, res){
 
 
 function create(req, res){
-  req.body.name = user.username; 
-  req.body.rating = parseFloat(req.body.rating);
-  req.body.cost = parseInt(req.body.cost);
-  req.body.date = new Date();
+  let form = req.body;
   Restaurant.findById(req.params.id, function(err, restaurant) {
-    restaurant.ratings.push(req.body);
+    restaurant.ratings.push({
+      name: form.name,
+      date: new Date(),
+      ratingDetails: [],
+      photo: form.photo,
+      rating: parseFloat(req.body.rating),
+      userId: form.userId,
+      comment: form.comment,
+      cost: parseInt(req.body.cost),
+   });
+   
     restaurant.save(function(err){
 			res.redirect(`/restaurant/${restaurant._id}`)
+      console.log(restaurant.ratings, "ratings after save")
 		})
 	});
 }

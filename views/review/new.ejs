@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<h1>Add Review</h1>
+<h1>Add Review for <%= restaurant.name %></h1>
 <% function prettyDate(){
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric' };
   const date = new Date
@@ -7,13 +7,10 @@
 } %> 
 <div class="container">
   <form action="/restaurant/<%=restaurant._id%>/review/new" method="POST" >
-    <div class="mb-3">
-      <label  class="form-label">Restaurant</label>
-      <input type="text" readonly class="form-control-plaintext" name="none" value="<%= restaurant.name %>">
-    </div>
-    <div class="mb-3">
-      <label  class="form-label">Date</label>
-      <input name="date" readonly class="form-control-plaintext"  value="<%= prettyDate() %>">
+    <div class="mb-3 d-none">
+      <label  class="form-label">Username</label>
+      <input type="hidden" readonly class="form-control-plaintext" name="name" value="<%= user.username %>"/>
+      <input type="hidden" readonly class="form-control-plaintext " name="userId" value="<%= user.userId %>"/>
     </div>
     <!-- <div class="mb-3">
       <label  class="form-label">Rating Details</label>

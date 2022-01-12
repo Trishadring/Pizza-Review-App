@@ -7,7 +7,7 @@ const reviewSchema = new Schema({
   ratingDetails: Array,
   photo: String,
   rating: Number,
-  userId: {type: Schema.Types.ObjectId, ref: 'User'},
+  userId: String,
   comment: String,
   cost: Number,
 });
