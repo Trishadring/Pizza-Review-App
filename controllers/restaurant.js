@@ -25,7 +25,10 @@ function allRestaurants(req, res){
 }
 
 function show(req, res){
-  Restaurant.findById(req.params.id).populate('ratings').exec((err, ratings) => {
+  console.log(req.params, "params");
+  Restaurant.findById(req.params.id).populate('ratings').exec((err, ratings) => { 
+    console.log(ratings, "rating")
     res.render('restaurant/index', { title: 'Reviews', restaurant : ratings });
+   
   })
 }

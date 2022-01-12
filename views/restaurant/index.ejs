@@ -12,10 +12,9 @@
       <h1><%= restaurant.name %></h1>
       <p><%= restaurant.address %></p>
     </div>
-    <div id="rating"> 
+    <!-- <div id="rating"> 
       <p id="rating-num">10</p>
-      <!-- Rating -->
-    </div>
+    </div> icebox-->
     <div>
       <a href="<%= restaurant.url %>">Website</a>
     </div>
@@ -29,24 +28,29 @@
   <div class="reviews pt-3 d-flex flex-wrap">
   <% if(restaurant.ratings){ %> 
     <% restaurant.ratings.forEach(function(m) { %>
-      
-        <div class="card col-12 col-sm-5 col-md-3">
-          
+        <div class="card col-12 col-sm-5 col-md-3"> 
           <img class="card-img-top" src="<%=m.photo%>" alt="Card image cap">
           <!-- <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap"> -->
           <div class="card-body" >
             <div class="rating">
               <p class="rating-num"><%= m.rating %></p>
-              
-            </div>
+            </div>  
+            <!-- icebox -->
             <h5 class="reviewCard__title"><%= m.comment %></h5>
-            <%= m._id %> love
             <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
-            <a class="btn btn-outline-primary" href="/review/<%=m._id%>" > Edit Review</a>
-              <form action="/review/<%= m._id %>?_method=DELETE" method="POST">
-                <button type="submit">X</button>
-              </form>
-            <a class="btn btn-outline-primary" href="/review/<%=m._id%>" > Delete Review</a>
+            
+            <% if(user) { %> 
+              <% if (m.userId = (user.userId)) { %> 
+                <form action="/review/<%= m._id %>?_method=PUT" method="POST">
+                  <!-- Value attribute is being set to the comment's current text -->
+                  <input name="text" value="<%= m.comment %>">
+                  <button lass="btn btn-outline-primary" type="submit">Edit</button>
+                </form>
+                <form action="/review/<%= m._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-outline-primary" type="submit">X</button>
+                </form>
+              <% } %> 
+            <% } %> 
           </div>
         </div>
       
