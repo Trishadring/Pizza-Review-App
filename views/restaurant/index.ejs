@@ -29,7 +29,9 @@
     <% if(restaurant.ratings.length > 0){ %> 
       <% restaurant.ratings.forEach(function(m) { %>
         <div class="card col-12 col-sm-5 col-md-3"> 
-          <img class="card-img-top" src="<%=m.photo%>" alt="Card image cap">
+          <div class="image-container">
+            <img class="card-img-top" src="<%=m.photo%>" alt="Card image cap">
+          </div>
           <!-- if else ice box -->
           <!-- <img class="card-img-top" src="/images/pizza.jpeg" alt="Card image cap"> -->
           <div class="card-body" >

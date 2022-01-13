@@ -33,21 +33,21 @@
 
 .rating{
   position: absolute;
-  right: 0.625rem;
-  top: 0.25rem;
+  right: 1rem;
+  top: 1rem;
   z-index: 2;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: 2px solid rgb(198, 34, 50);
   background: rgb(255, 255, 255);
 }
 
 .rating p {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   color: red;
   text-align: center;
   align-items: center;
@@ -78,3 +78,53 @@
   margin-right:1rem;
 }
 
+.image-container{
+  max-height:70vh; 
+  overflow:hidden;
+}
+.card{
+  width:100%;
+}
+
+.navbar-collapse{
+  margin-left: 1rem;
+}
+
+/* Landscape phones and portrait tablets */
+@media (min-width: 767px) {
+  .card{
+    max-width:48%;
+  }
+  .image-container{
+    max-height:50vh; 
+  }
+}
+
+.rating{
+  z-index: 2;
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.rating p {
+  font-size: 0.9rem;
+}
+
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px)  {
+  .card{
+    max-width:30%;
+  }
+  .image-container{
+    max-height:40vh; 
+  }
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .card{
+    max-width:24%;
+  }
+}

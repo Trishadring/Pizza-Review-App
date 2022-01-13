@@ -18,6 +18,7 @@ const restaurantSchema = new Schema({
   url: String,
   logo: String,
   headImg: String,
+  yelpId: String,
   ratings: [reviewSchema],
 });
 

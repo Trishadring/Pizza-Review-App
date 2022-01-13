@@ -1,8 +1,10 @@
 <%- include('./partials/header') %>
 <div class="reviews pt-3 d-flex flex-wrap">
   <% restaurants.forEach(function(m) { %>
-    <div class="card col-12 col-sm-5 col-md-3" id="<%= m._id %>" >
-      <img class="card-img-top"  src="<%= m.headImg %>" alt="Card image cap">
+    <div class="card" id="<%= m._id %>" >
+      <div class="image-container">
+        <img class="card-img-top"  src="<%= m.headImg %>" alt="Card image cap">
+      </div>
       <div class="card-body" >
         <h5 class="reviewCard__title"><%= m.name %></h5>
         <p class="reviewCard__location"><%= m.address %></p>

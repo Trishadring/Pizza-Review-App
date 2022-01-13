@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+<h1>Add a new Restaurant</h1>
+
+<div class="container">
+  <form action="/restaurant/" method="POST" >
+    <div class="row mb-3">
+      <div class="col">
+        <label  class="form-label">Restaurant Name</label>
+        <input name="text" name="term" class="form-control">
+      </div>
+      <div class="col">
+        <label  class="form-label">City, State</label>
+        <input type="text" class="form-control" name="location">
+      </div>
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Add Restaurant">
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
