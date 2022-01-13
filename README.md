@@ -7,7 +7,7 @@ who doesn't love pizza?
 
 ## Technologies Used
 
-built with Express, MongoDB, html, css, bootstrap and Javascript
+Built with Express, MongoDB, HTML, CCS, Bootstrap, YelpAPI and Javascript
 images taken from yelp
 [logo from MCion](https://www.mcicon.com/product/pizza-icon-5/)
 idea for detailed review from Scott's pizza tours pocket pizza journal
@@ -25,7 +25,6 @@ deployed app and trello
 
 - let users make a more detailed review
 - show average review for a restaurant
-- implement yelp api add more restaurants
 - see a detailed view of a review
 - see a users profile
-- see restaurants hours
+- see restaurants hours -from yelp api

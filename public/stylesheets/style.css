@@ -6,19 +6,6 @@
   margin-bottom: 0.625rem;
 }
 
-#search-row form {
-  padding-top: 1.25rem;
-}
-
-.student-name {
-  position: relative;
-  top: -0.313rem;
-}
-
-.collection-item form {
-  margin-top: -0.313rem;
-}
-
 .reviewCard__title{
  font-size: 0.875rem;
  font-weight: bold;
@@ -90,6 +77,11 @@
   margin-left: 1rem;
 }
 
+.reviewCard__cost{
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+
 /* Landscape phones and portrait tablets */
 @media (min-width: 767px) {
   .card{
@@ -98,19 +90,16 @@
   .image-container{
     max-height:50vh; 
   }
+  .rating{
+    z-index: 2;
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .rating p {
+    font-size: 0.9rem;
+  }
 }
-
-.rating{
-  z-index: 2;
-  font-size: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.rating p {
-  font-size: 0.9rem;
-}
-
 
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px)  {
@@ -118,7 +107,7 @@
     max-width:30%;
   }
   .image-container{
-    max-height:40vh; 
+    height:30vh;
   }
 }
 

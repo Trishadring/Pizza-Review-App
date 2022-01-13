@@ -1,5 +1,6 @@
 const Restaurant = require('../models/restaurant');
 
+
 module.exports = {
 	index,
   allRestaurants,
@@ -15,7 +16,7 @@ function index(req, res){
 }
 
 function allRestaurants(req, res){
-    console.log('sending allRestaurants')
+    //console.log('sending allRestaurants')
     Restaurant.find({}, function(err, restaurantDocuments){
       res.render('./index', {
         title: 'home page',
@@ -27,22 +28,7 @@ function allRestaurants(req, res){
 function show(req, res){
   Restaurant.findById(req.params.id).populate('ratings').exec((err, ratings) => { 
     res.render('restaurant/index', { title: 'Reviews', restaurant : ratings });
-    
   })
-
-  // Restaurant.findById(req.params.id, function(err, restaurant) {
-  //   
-  //   
-  //   client.search(searchRequest).then(response => {
-  //     const firstResult = response.jsonBody.businesses[0];
-  //     const prettyJson = JSON.stringify(firstResult, null, 4);
-  //     console.log(prettyJson);
-  //   }).catch(e => {
-  //     console.log(e);
-  //   });
-  //   console.log(searchRequest)
-  // })
-  
 }
 // icebox
 
@@ -61,20 +47,18 @@ function averageReview(restaurantId){
 }
 
 function create(req, res){ 
-  console.log(req.body);
   const yelp = require('yelp-fusion');
   const apiKey = process.env.YELP_SECRET;
   const client = yelp.client(apiKey);
-  console.log(req.body.text, "text");
-  console.log(req.body.location, "location");
   const searchRequest = {
     term: req.body.text,
     location: req.body.location,
   };
+  console.log(req.body)
   client.search(searchRequest).then(response => {
     const firstResult = response.jsonBody.businesses[0];
     const prettyJson = JSON.stringify(firstResult, null, 4);
-    // console.log(prettyJson);
+    console.log(prettyJson);
     let newR = {
       name: firstResult.name,
       address: firstResult.location.display_address.toString(),
@@ -83,8 +67,15 @@ function create(req, res){
       yelpId: firstResult.id
     }
     console.log(newR, "new restaurant");
-    Restaurant.create(newR, function(err, restaurant){
-      res.redirect('/'); 
+    Restaurant.findOne({yelpId :newR.yelpId}, function (err, isRestaurant) {
+      if (isRestaurant){
+        res.redirect('/');
+      }
+      else{
+        Restaurant.create(newR, function(err, restaurant){
+          res.redirect('/'); 
+        })
+      }
     })
   }).catch(e => {
     console.log(e);
