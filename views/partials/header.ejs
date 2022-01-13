@@ -23,12 +23,14 @@
           <a class="nav-link" href="/">Home</a>
         </li>
       </ul>
-      <% if (user) { %>
-        <a class="btn btn-sm btn-outline-secondary" href="/logout">Log Out</a>
-        <span>Hi <%= user.username %> </span>
-      <% } else { %>
-        <a class="btn btn-sm btn-outline-secondary" href="/auth/google"> Login with Google</a>
-      <% } %>      
+      <div id="login">
+        <% if (user) { %>
+          <a class="btn btn-sm btn-outline-secondary" href="/logout">Log Out</a>
+          <span>Hi <%= user.username %> </span>
+        <% } else { %>
+          <a class="btn btn-sm btn-outline-secondary" href="/auth/google"> Login with Google</a>
+        <% } %>   
+      </div>   
     </div>
   </nav>
   <div class="container">

@@ -69,3 +69,12 @@
   padding-bottom:0;
   margin-bottom:0;
 }
+
+.mr-auto{
+  margin-right:auto;
+}
+
+#login{
+  margin-right:1rem;
+}
+

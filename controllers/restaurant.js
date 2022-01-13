@@ -1,5 +1,4 @@
 const Restaurant = require('../models/restaurant');
-const Review = require('../models/review');
 
 module.exports = {
 	index,
@@ -26,5 +25,24 @@ function allRestaurants(req, res){
 function show(req, res){
   Restaurant.findById(req.params.id).populate('ratings').exec((err, ratings) => { 
     res.render('restaurant/index', { title: 'Reviews', restaurant : ratings });
+    
+  })
+}
+
+function averageReview(restaurantId){
+
+  Restaurant.findById(restaurantId, function(err, restaurant) {
+    let ratingsArray =[];
+    restaurant.ratings.forEach(function(m) { 
+      ratingsArray.push(m.rating);
+    })
+    function getAvg(grades) {
+      const total = grades.reduce((acc, c) => acc + c, 0);
+      return total / grades.length;
+    }
+
+
+    return getAvg(ratingsArray).toString();
+    
   })
 }

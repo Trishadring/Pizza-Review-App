@@ -14,8 +14,8 @@
     <p><%= restaurant.address %></p>
   </div>
   <!-- <div id="rating"> 
-    <p id="rating-num">10</p>
-  </div> icebox-->
+    <p id="rating-num"> </p>
+  </div> icebox -->
   <div>
     <a href="<%= restaurant.url %>">Website</a>
   </div>
@@ -26,7 +26,7 @@
   
 <div id="reviews">
   <div class="reviews pt-3 d-flex flex-wrap">
-    <% if(restaurant.ratings){ %> 
+    <% if(restaurant.ratings.length > 0){ %> 
       <% restaurant.ratings.forEach(function(m) { %>
         <div class="card col-12 col-sm-5 col-md-3"> 
           <img class="card-img-top" src="<%=m.photo%>" alt="Card image cap">
@@ -37,12 +37,15 @@
               <p class="rating-num"><%= m.rating %></p>
             </div>  
             <h5 class="reviewCard__title"><%= m.comment %></h5>
+            <p class="reviewCard__cost">Cost of Pizza: $<%= m.cost %></p>
             <p class="reviewCard__location"><%= m.name %> | <%= prettyDate(m.date) %></p>
             <% if(user) { %> 
-              <% if (m.userId = (user.userId)) { %> 
+              <% if (m.userId === (user.userId)) { %> 
                 <form action="/review/<%= m._id %>?_method=PUT" method="POST">
-                  <input name="text" value="<%= m.comment %>">
-                  <button lass="btn btn-outline-primary" type="submit">Edit</button>
+                  <div class="row">
+                    <div class="col"><input name="textarea" class="form-control" rows="3" value="<%= m.comment %>"></div>
+                    <div class="col"> <button class="btn btn-outline-primary" type="submit">Edit</button></div>
+                  </div>
                 </form>
                 <form action="/review/<%= m._id %>?_method=DELETE" method="POST">
                   <button class="btn btn-outline-primary" type="submit">X</button>

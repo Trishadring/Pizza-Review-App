@@ -8,7 +8,6 @@ module.exports = {
   edit
 }
 
-
 function newReview(req, res){
   console.log("review new review function")
   Restaurant.findById(req.params.id, function(err, restaurant) {
@@ -16,26 +15,26 @@ function newReview(req, res){
 	});
 }
 
-
-function create(req, res){
+ function create(req, res){
   console.log("review create function")
   let form = req.body;
-  Restaurant.findById(req.params.id, function(err, restaurant) {
+   Restaurant.findById(req.params.id, async function(err, restaurant) {
     restaurant.ratings.push({
       name: form.name,
       date: new Date(),
-      ratingDetails: [],
       photo: form.photo,
       rating: parseFloat(req.body.rating),
       userId: form.userId,
       rating: form.rating,
-      cost: parseInt(req.body.cost),
+      comment: form.comment,
+      cost: parseFloat(req.body.cost)
    });
-   
-    restaurant.save(function(err){
-			res.redirect(`/restaurant/${restaurant._id}`)
-      console.log(restaurant.ratings, "ratings after save")
+    await restaurant.save(function(err){
+			
 		})
+    res.redirect(`/restaurant/${restaurant._id}`)
+    console.log(restaurant, "rest after save")
+    console.log(restaurant.ratings, "ratings after save")
 	});
 }
 
@@ -55,7 +54,6 @@ function deleteReview(req, res) {
     }
   );
 }
-
 
 function edit(req, res) {
   Restaurant.findOne({'ratings._id': req.params.id}, function(err, restaurant) {
