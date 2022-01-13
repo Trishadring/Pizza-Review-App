@@ -29,9 +29,7 @@ function newReview(req, res){
       comment: form.comment,
       cost: parseFloat(req.body.cost)
    });
-    await restaurant.save(function(err){
-			
-		})
+    restaurant.save(function(err){})
     res.redirect(`/restaurant/${restaurant._id}`)
     console.log(restaurant, "rest after save")
     console.log(restaurant.ratings, "ratings after save")

@@ -10,8 +10,7 @@ module.exports = {
 }
 
 function index(req, res){
-    Review.find({}, function(err, reviewDocument){
-    })
+    Review.find({}, function(err, reviewDocument){})
 		res.render('restaurant/index')
 }
 
