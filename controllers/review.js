@@ -14,9 +14,9 @@ function newReview(req, res){
 	});
 }
 
- function create(req, res){
+function create(req, res){
   let form = req.body;
-   Restaurant.findById(req.params.id, async function(err, restaurant) {
+  Restaurant.findById(req.params.id, async function(err, restaurant) {
     restaurant.ratings.push({
       name: form.name,
       date: new Date(),
@@ -26,7 +26,7 @@ function newReview(req, res){
       rating: form.rating,
       comment: form.comment,
       cost: parseFloat(req.body.cost)
-   });
+  });
     restaurant.save(function(err){})
     res.redirect(`/restaurant/${restaurant._id}`)
 	});
@@ -52,8 +52,11 @@ function edit(req, res) {
   Restaurant.findOne({'ratings._id': req.params.id}, function(err, restaurant) {
     const ratingSubdoc = restaurant.ratings.id(req.params.id);
     ratingSubdoc.comment = req.body.text;
+    console.log(req.body.text, "text");
+    
     restaurant.save(function(err) {
       res.redirect(`/restaurant/${restaurant._id}`);
+      console.log(ratingSubdoc, "ratingsub");
     });
   });
 }

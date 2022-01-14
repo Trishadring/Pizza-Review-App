@@ -42,7 +42,7 @@
               <% if (m.userId === (user.userId)) { %> 
                 <form action="/review/<%= m._id %>?_method=PUT" method="POST">
                   <div class="row">
-                    <div class="col"><input name="textarea" class="form-control" rows="3" value="<%= m.comment %>"></div>
+                    <div class="col"><input name="text" type="textarea" class="form-control" rows="3" value="<%= m.comment %>"></div>
                     <div class="col"> <button class="btn btn-outline-primary" type="submit">Edit</button></div>
                   </div>
                 </form>
