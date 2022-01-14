@@ -13,19 +13,19 @@ who doesn't love pizza?
 
 ## Technologies Used
 
-Built with 
--Express
--MongoDB
--Bootstrap
--YelpAPI
--Javascript
--Node.js
--Ejs
--Google OAuth
+Built with  
+-Express  
+-MongoDB  
+-Bootstrap  
+-YelpAPI  
+-Javascript  
+-Node.js  
+-Ejs  
+-Google OAuth  
 
-images taken from yelp
-[logo from MCion](https://www.mcicon.com/product/pizza-icon-5/)
-idea for detailed review from Scott's pizza tours pocket pizza journal
+images taken from yelp  
+[logo from MCion](https://www.mcicon.com/product/pizza-icon-5/)  
+idea for detailed review from Scott's pizza tours pocket pizza journal  
 
 
 ## Getting Started
