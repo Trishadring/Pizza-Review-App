@@ -9,14 +9,12 @@ module.exports = {
 }
 
 function newReview(req, res){
-  console.log("review new review function")
   Restaurant.findById(req.params.id, function(err, restaurant) {
     res.render('review/new', { title: 'New Review', restaurant : restaurant });
 	});
 }
 
  function create(req, res){
-  console.log("review create function")
   let form = req.body;
    Restaurant.findById(req.params.id, async function(err, restaurant) {
     restaurant.ratings.push({
@@ -31,13 +29,10 @@ function newReview(req, res){
    });
     restaurant.save(function(err){})
     res.redirect(`/restaurant/${restaurant._id}`)
-    console.log(restaurant, "rest after save")
-    console.log(restaurant.ratings, "ratings after save")
 	});
 }
 
 function deleteReview(req, res) {
-  console.log("review delete review function")
   Restaurant.findOne(
     {'ratings._id': req.params.id, 
     'ratings.userId': req.user.userId},

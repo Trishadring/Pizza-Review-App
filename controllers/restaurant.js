@@ -15,7 +15,6 @@ function index(req, res){
 }
 
 function allRestaurants(req, res){
-    //console.log('sending allRestaurants')
     Restaurant.find({}, function(err, restaurantDocuments){
       res.render('./index', {
         title: 'home page',
@@ -57,7 +56,6 @@ function create(req, res){
   client.search(searchRequest).then(response => {
     const firstResult = response.jsonBody.businesses[0];
     const prettyJson = JSON.stringify(firstResult, null, 4);
-    console.log(prettyJson);
     let newR = {
       name: firstResult.name,
       address: firstResult.location.display_address.toString(),
@@ -65,7 +63,6 @@ function create(req, res){
       headImg: firstResult.image_url,
       yelpId: firstResult.id
     }
-    console.log(newR, "new restaurant");
     Restaurant.findOne({yelpId :newR.yelpId}, function (err, isRestaurant) {
       if (isRestaurant){
         res.redirect('/');
