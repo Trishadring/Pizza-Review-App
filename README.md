@@ -4,12 +4,12 @@ who doesn't love pizza?
 
 ## ScreenShots
 
-![Before you are logged in](https://imgur.com/do57WKc)
-![After you are logged in](https://imgur.com/iYj02Zy)
-![adding a new restaurant](https://imgur.com/vXaODPq)
-![viewing a restaurants page](https://imgur.com/kHJjMnC)
-![adding a review](https://imgur.com/nAIXXmc)
-![on mobile](https://imgur.com/1fGRSZs)
+![Before you are logged in](/public/images/beforelogin.png)
+![After you are logged in](/public/images/afterlogin.png)
+![adding a new restaurant](/public/images/newrestaurant.png)
+![viewing a restaurants page](/public/images/restaurant.png)
+![adding a review](/public/images/addreview.png)
+![on mobile](/public/images/mobile.png)
 
 ## Technologies Used
 
